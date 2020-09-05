@@ -1,9 +1,15 @@
 /**
  * @file
- * \brief Implementation of an algorithm to solve the jumping game problem
- * \details
+ * @brief Implementation of an algorithm to solve the jumping game problem
+ * @details
  * This algorithm is a greedy algorithm.
  * This solution takes in input as a vector and output as a boolean to check if you can reach the last position.
+ * We name the indices good and bad based on whether we can reach the destination if we start at that position.
+ * We initialize the last index as lastPos.
+ * Here, we start from the end of the array and check if we can ever reach the first index.
+ * We check if the sum of the index and the maximum jump count given is greater than or equal to the lastPos.
+ * If yes, then that is the last position you can reach starting from the back.
+ * After the end of the loop, if we reach the lastPos as 0, then the destination can be reached from the start position.
  * @author [Rakshaa Viswanathan](https://github.com/rakshaa2000)
 */
 
@@ -11,17 +17,10 @@
 #include<iostream>
 #include <cassert>
 
-//Implements the algorithm
-/*We name the indices good and bad based on whether we can reach the destination if we start at that position.
- *We initialize the last index as lastPos.
- *Here, we start from the end of the array and check if we can ever reach the first index.
- *We check if the sum of the index and the maximum jump count given is greater than or equal to the lastPos.
- *If yes, then that is the last position you can reach starting from the back.
- *After the end of the loop, if we reach the lastPos as 0, then the destination can be reached from the start position.
-*/
+
  /**
  * @brief This function implements the above algorithm
- * @param vector of nums containing the maximum jump (in steps) from that index
+ * @param array of numbers containing the maximum jump (in steps) from that index
  * @return returns bool value whether final index can be reached or not
  */  
 bool canJump(std::vector<int> nums) {
@@ -37,8 +36,9 @@ bool canJump(std::vector<int> nums) {
 
 /**
  * @brief Function to test above algorithm
+ * @returns void
  */
-void test(){
+static void test(){
   //Test 1
   std::vector<int> num1={4,3,1,0,5};
   assert(canJump(num1)==true);
